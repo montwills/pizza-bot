@@ -1,6 +1,6 @@
 module.exports = {
   init: (controller) => {
-    controller.hears([/I want a pizza/], ['direct_message', 'ambient'], (bot, message) => {
+    controller.hears([/I want a pizza/], ['direct_message', 'direct_mention'], (bot, message) => {
       bot.reply(message, `Searching for closest pizza store, <@${message.user}>.`)
     })
   },
