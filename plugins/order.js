@@ -3,7 +3,14 @@ const pizzapi = require('dominos')
 module.exports = {
   init: (controller) => {
     controller.hears([/I want a pizza/], ['direct_message', 'direct_mention'], (bot, message) => {
-      bot.reply(message, `Closest pizza store:`)
+      bot.reply(message, "What address are you near?")
+
+      bot.createConversation(message, setUpConvo)
+
+      function setUpConvo(err, convo) {
+        convo.addQuestion('Which address do you want it delivered to?')
+      }
+
 
       pizzapi.Util.findNearbyStores('11 Times Square, New York, NY 10036', 'Delivery', function (storeData) {
         var results = ''
