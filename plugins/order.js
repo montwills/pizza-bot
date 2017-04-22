@@ -10,11 +10,10 @@ module.exports = {
         storeData.result.Stores.filter(function (store) {
           return store.IsOnlineCapable && store.IsOnlineNow && store.IsOpen
         }).map(function(store) {
-          results += store.StoreID + "\n" + store.AddressDescription + "\n\n"
+          results += store.StoreID + ": " + store.AddressDescription.replace(/\r?\n|\r/, ' ') + "\n\n"
         })
         bot.reply(message, results)
 
-        // storeData.result.Stores[0].StoreID + `\n` +  storeData.result.Stores[0].AddressDescription)
       })
     })
   },
